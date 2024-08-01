@@ -1,18 +1,48 @@
-import Link from 'next/link'
-import React from 'react'
-
+"use client";
+import { useState } from "react";
+import styles from "./links.module.css";
+import NavLinks from "./navLinks/navLinks";
+const links = [
+  { path: "/", title: "Home" },
+  { path: "/about", title: "About" },
+  { path: "/contact", title: "Contact" },
+  { path: "/blog", title: "Blog" },
+];
 const Links = () => {
-    const links = [
-        { path: '/', title: 'Home' },
-        { path: '/about', title: 'About' },
-        { path: '/contact', title: 'Contact' },
-        { path: '/blog', title: 'Blog' },
-    ]
+  const [open, setOpen] = useState(false);
+  const session = true;
+  const isAdmin = true;
   return (
-    <div>
-        {links.map((link, index) => (<Link key={index} href={link.path}>{link.title}</Link>))}
-    </div>
-  )
-}
+    <div className={styles.container}>
+      <div className={styles.links}>
+        {links.map((link, index) => (
+          <NavLinks key={index} item={link} />
+        ))}
+        {session ? (
+          <>
+            {isAdmin && <NavLinks item={{ path: "/admin", title: "Admin" }} />}
 
-export default Links
+            <button className={styles.logout}>Logout</button>
+          </>
+        ) : (
+          <NavLinks item={{ path: "/login", title: "Login" }} />
+        )}
+      </div>
+      <button
+        className={styles.menuButton}
+        onClick={() => setOpen((open) => !open)}
+      >
+        Menu
+      </button>
+      {open && (
+        <div className={styles.mobileLinks}>
+          {links.map((link, index) => (
+            <NavLinks item={link} key={index} />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default Links;
