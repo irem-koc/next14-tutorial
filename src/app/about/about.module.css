@@ -1,0 +1,43 @@
+.container{
+    display: flex;
+    gap:100px;
+    justify-content: space-between;
+}
+.textContainer{
+    flex:1;
+    display: flex;
+    flex-direction: column;
+    gap:45px;
+    justify-content: center;
+}
+.about{
+    color: var(--btn);
+    font-size:large;
+}
+.header{
+    font-size: 48px;
+}
+.subText{
+    font-size: 17px;
+}
+.colContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* gap: 50px; */
+}
+.col{
+    display: flex;
+    flex-direction: column;
+    gap:10px
+}
+.colHeader{
+    color: var(--btn);
+    font-weight: 900;
+    font-size: x-large;
+}
+.imageContainer{
+    flex:1;
+    position: relative;
+
+}
