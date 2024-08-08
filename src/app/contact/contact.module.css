@@ -35,3 +35,9 @@
     border-radius: 5px;
     font-weight: 600;
 }
+@media (max-width: 768px){
+    .container{
+        flex-direction: column
+    }
+    
+}
